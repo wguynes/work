@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  work:
+    build: .
+    image: wguynes/work
+    stdin_open: true
+    tty: true
+    hostname: work
+    volumes:
+      - type: volume
+        source: work_data
+        target: /home/user
+      - type: bind
+        source: .
+        target: /home/work_src
+      - type: bind
+        source: "C:/Users/wguyn/.ssh"
+        target: /home/user/.ssh
+
+volumes:
+  work_data:
